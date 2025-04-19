@@ -13,13 +13,16 @@ def get_sentiment(text: list) -> list:
         if not isinstance(item, str):
             return "Wrong input. text must be an array of strings."
 
-    system_prompt = """
+    system_prompt = f"""
         Your are the sentiment analysis assistant that to classify its sentiment.
         The result must be in a list with category labels as strings. 
         Respond **only** in this JSON format:
-        {
+        {{
             "result": ["positive", "neutral", "negative", "irrelevant"]
-        }
+        }}
+        each sentiment only result in one labels.
+        Which means that the length of result array must be same as the length of original array.
+        The size of the original array will be {len(text)}
     """
 
     prompt = f"""
@@ -31,6 +34,7 @@ def get_sentiment(text: list) -> list:
     """
     # pass
     client = OpenAI()
+    print("input array size:", len(text))
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
@@ -45,6 +49,7 @@ def get_sentiment(text: list) -> list:
         json_result = json.loads(content)
         if isinstance(json_result, dict) and "result" in json_result:
             result = json_result["result"]
+            print("output array size:", len(text))
             return result if isinstance(result, list) else "Unexpected result format"
         else:
             return "Unexpected response format"
