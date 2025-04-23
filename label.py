@@ -4,7 +4,15 @@ import json
 
 def get_sentiment(text: list) -> list:
     """
-    INSERT DOCSTRING HERE
+    Function Name: get_sentiment
+
+    Using Open AI to identify each text in the given List of text.
+
+    Args:
+        text (list[str]): a list contains all the comments.
+    
+    Returns:
+        List[str]: the result of the sentiments label for each comment.
     """
     if not isinstance(text, list) or len(text) == 0 or not text:
         return "Wrong input. text must be an array of strings."

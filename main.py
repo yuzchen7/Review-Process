@@ -6,7 +6,16 @@ import json
 
 def run(filepath: str):
     """
-    INSERT DOCSTRING HERE
+    Function Name: run
+
+    General a bar graph and a list of sentiments label for each comment base
+    on the input data
+    
+    Args:
+        filepath (str): path STRING of input file
+    
+    Returns:
+        List[str]: the result of the sentiments label for each comment.
     """
     # open the json object
     with open("data/raw/reviews.json") as j:

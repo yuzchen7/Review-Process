@@ -3,7 +3,17 @@ import matplotlib.pyplot as plt
 
 def make_plot(sentiments: list) -> list:
     """
-    INSERT DOCSTRING HERE
+    Function Name: make_plot
+
+    General a bar graph base on the given data set with sentiments 
+    in {negative, positive, neutral, irrelevant}, outputting into
+    a png.
+
+    Args:
+        sentiments (List[str]): List of data sentiments, in str type
+    
+    Returns:
+        no return value
     """
     sentiments_map = {
         "negative"   : 0,
